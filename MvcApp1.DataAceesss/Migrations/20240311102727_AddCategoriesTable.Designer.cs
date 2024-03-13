@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using MvcApp1.Data;
+using MvcApp1.DataAccess.Data;
 
 #nullable disable
 
-namespace MvcApp1.Migrations
+namespace MvcApp1.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20240311102727_AddCategoriesTable")]

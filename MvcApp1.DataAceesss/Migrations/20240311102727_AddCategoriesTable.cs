@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace MvcApp1.Migrations
+namespace MvcApp1.DataAccess.Migrations
 {
     /// <inheritdoc />
     public partial class AddCategoriesTable : Migration

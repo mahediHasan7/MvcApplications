@@ -1,0 +1,50 @@
+﻿@model Category
+
+<form asp-controller="Category" asp-action="Create" method="post">
+    <div class="container">
+        <div class="row pt-4">
+            <div class="col-6">
+                <h2 class="text-primary">Create Category</h2>
+            </div>
+        </div>
+
+        <div class="row pt-4">
+            @* to display only the error messages that are associated with the model as a whole. It excludes any error messages that are associated with specific properties of the model. This is useful when you want to show a summary of general validation errors that are not tied to any specific input field. *@
+            @* <div asp-validation-summary="ModelOnly"></div> *@
+
+            @* to display all the validation error messages, including both the error messages associated with the model as a whole and the error messages associated with individual properties of the model. This is useful when you want to show a comprehensive summary of all validation errors, including specific field-level errors. *@
+            <div asp-validation-summary="All"></div>
+
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DisplayOrder" class="control-label"></label>
+                <input asp-for="DisplayOrder" class="form-control" />
+                <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+            </div>
+
+        </div>
+
+        <div class="row pt-4">
+            <div class="col-6">
+                <button type="submit" class="btn btn-primary form-control">Create</button>
+            </div>
+
+            <div class="col-6">
+                <a asp-controller="Category" asp-action="Index" class="btn btn-primary form-control">
+                    Back to List
+                </a>
+            </div>
+        </div>
+</form>
+
+@* client side validations *@
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
