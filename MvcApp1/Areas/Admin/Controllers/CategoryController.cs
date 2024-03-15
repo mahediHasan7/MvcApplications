@@ -1,22 +1,23 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MvcApp1.DataAccess.Data;
+using MvcApp1.DataAccess.Repository.IRepository;
 using MvcApp1.Models;
 
 
-namespace MvcApp1.Controllers;
+namespace MvcApp1.Areas.Admin.Controllers;
 
+[Area("Admin")]
 public class CategoryController : Controller
 {
-    private readonly ApplicationDbContext _db;
-    public CategoryController(ApplicationDbContext db)
+    private readonly IUnitOfWorks _unitOfWork;
+    public CategoryController(IUnitOfWorks unitOfWork)
     {
-        _db = db;
+        _unitOfWork = unitOfWork;
     }
 
     public IActionResult Index()
     {
         // Retrieve the data from database
-        List<Category> categories = _db.Categories.ToList();
+        List<Category> categories = _unitOfWork.CategoryRepository.GetAll().ToList();
 
         return View(categories);
     }
@@ -44,8 +45,8 @@ public class CategoryController : Controller
 
         if (ModelState.IsValid)
         {
-            _db.Categories.Add(category);
-            _db.SaveChanges();
+            _unitOfWork.CategoryRepository.Add(category);
+            _unitOfWork.Save();
             TempData["success"] = "The category has been created successfully!";
 
             return RedirectToAction("Index", "Category");
@@ -63,7 +64,7 @@ public class CategoryController : Controller
             return NotFound();
         }
 
-        Category? catToEdit = _db.Categories.Where(category => category.Id == id).FirstOrDefault();
+        Category? catToEdit = _unitOfWork.CategoryRepository.Get(cat => cat.Id == id);
         if (catToEdit == null)
         {
             return NotFound();
@@ -82,8 +83,9 @@ public class CategoryController : Controller
 
         if (ModelState.IsValid)
         {
-            _db.Categories.Update(category);
-            _db.SaveChanges();
+            _unitOfWork.CategoryRepository.Update(category);
+            _unitOfWork.Save();
+
             TempData["success"] = "The category has been updated successfully!";
 
             return RedirectToAction("Index");
@@ -102,14 +104,14 @@ public class CategoryController : Controller
             return NotFound();
         }
 
-        Category? catToDelete = _db.Categories.Where(category => category.Id == id).FirstOrDefault();
+        Category? catToDelete = _unitOfWork.CategoryRepository.Get(cat => cat.Id == id);
         if (catToDelete == null)
         {
             return NotFound();
         }
 
-        _db.Categories.Remove(catToDelete);
-        _db.SaveChanges();
+        _unitOfWork.CategoryRepository.Remove(catToDelete);
+        _unitOfWork.Save();
 
         TempData["success"] = "The category has been deleted successfully!";
 

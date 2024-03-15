@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using MvcApp1.DataAccess.Data;
+using MvcApp1.DataAccess.Repository;
+using MvcApp1.DataAccess.Repository.IRepository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +12,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+builder.Services.AddScoped<IUnitOfWorks, UnitOfWork>();
 
 var app = builder.Build();
 
@@ -30,6 +34,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{area=Customer}/{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
