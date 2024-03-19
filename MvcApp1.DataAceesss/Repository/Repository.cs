@@ -31,21 +31,43 @@ public class Repository<T> : IRepository<T> where T : class
         dbSet.Add(entity);
     }
 
-    public T Get(Expression<Func<T, bool>> filter)
+    public T Get(Expression<Func<T, bool>> filter, string? includeProperties = null)
     {
         IQueryable<T> query = dbSet;
 
         // deferred execution: The actual database query doesn't happen until you enumerate the IQueryable<T> (for example, by calling ToList, ToArray, FirstOrDefault, etc.). At that point, Entity Framework translates the IQueryable<T> into a SQL query, sends it to the database, and materializes the results into .NET objects. This is known as "deferred execution".
         query = query.Where(filter);
 
+        // iterate through includeProp and add them with the query
+        if (!string.IsNullOrEmpty(includeProperties))
+        {
+            string[] props = includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (string prop in props)
+            {
+                query = query.Include(prop);
+            }
+
+        }
+
         // this will send the database query
         return query.FirstOrDefault();
 
     }
 
-    public IEnumerable<T> GetAll()
+    public IEnumerable<T> GetAll(string? includeProperties = null)
     {
         IQueryable<T> query = dbSet;
+
+        // iterate through includeProp and add them with the query
+        if (!string.IsNullOrEmpty(includeProperties))
+        {
+            string[] props = includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (string prop in props)
+            {
+                query = query.Include(prop);
+            }
+
+        }
         return query.ToList();
     }
 

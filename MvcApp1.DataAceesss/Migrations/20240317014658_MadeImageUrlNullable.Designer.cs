@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MvcApp1.DataAccess.Data;
 
@@ -10,9 +11,11 @@ using MvcApp1.DataAccess.Data;
 namespace MvcApp1.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240317014658_MadeImageUrlNullable")]
+    partial class MadeImageUrlNullable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -129,7 +132,7 @@ namespace MvcApp1.DataAccess.Migrations
                             Price = 90.0,
                             Price100 = 80.0,
                             Price50 = 85.0,
-                            Title = "Ice Caps"
+                            Title = "Fortune of Time"
                         },
                         new
                         {
@@ -143,7 +146,7 @@ namespace MvcApp1.DataAccess.Migrations
                             Price = 30.0,
                             Price100 = 20.0,
                             Price50 = 25.0,
-                            Title = "Spark"
+                            Title = "Dark Skies"
                         },
                         new
                         {
@@ -157,7 +160,7 @@ namespace MvcApp1.DataAccess.Migrations
                             Price = 50.0,
                             Price100 = 35.0,
                             Price50 = 40.0,
-                            Title = "Behind The Lens"
+                            Title = "Vanish in the Sunset"
                         },
                         new
                         {
@@ -171,7 +174,7 @@ namespace MvcApp1.DataAccess.Migrations
                             Price = 65.0,
                             Price100 = 55.0,
                             Price50 = 60.0,
-                            Title = "Adenturous Eating"
+                            Title = "Cotton Candy"
                         },
                         new
                         {
@@ -185,7 +188,7 @@ namespace MvcApp1.DataAccess.Migrations
                             Price = 27.0,
                             Price100 = 20.0,
                             Price50 = 25.0,
-                            Title = "Love, Elliot"
+                            Title = "Rock in the Ocean"
                         },
                         new
                         {
@@ -199,7 +202,7 @@ namespace MvcApp1.DataAccess.Migrations
                             Price = 23.0,
                             Price100 = 20.0,
                             Price50 = 22.0,
-                            Title = "Culitvate Workplace"
+                            Title = "Leaves and Wonders"
                         });
                 });
 

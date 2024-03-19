@@ -7,14 +7,14 @@ namespace MvcApp1.DataAccess.Repository.IRepository;
 public interface IRepository<T> where T : class
 {
     // T - Category
-    IEnumerable<T> GetAll();
+    IEnumerable<T> GetAll(string? includeProperties = null);
 
     // this is a delegate that points to a method which takes a parameter of type T and returns a bool.
     //T Get(Func<T,bool> filter);
 
 
     // this is an expression tree. Its not executed immediately rather its convert into a query syntax for Entity Framework.
-    T Get(Expression<Func<T, bool>> filter);
+    T Get(Expression<Func<T, bool>> filter, string? includeProperties = null);
 
     void Add(T entity);
 

@@ -8,6 +8,8 @@ public interface IUnitOfWorks
 
     // Instead we need to use a property Instead
     ICategoryRepository CategoryRepository { get; }
+    public IProductRepository ProductRepository { get; }
+
 
     public void Save();
 }
