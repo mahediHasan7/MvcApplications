@@ -10,6 +10,8 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     public DbSet<Category> Categories { get; set; }
     public DbSet<Product> Products { get; set; }
     public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+    public DbSet<Company> Companies { get; set; }
+    public DbSet<ShoppingCart> ShoppingCarts { get; set; }
 
     // constructor
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
@@ -28,6 +30,14 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
             new Category { Id = 2, Name = "Horror", DisplayOrder = 2 },
             new Category { Id = 3, Name = "Fiction", DisplayOrder = 3 },
             new Category { Id = 4, Name = "Drama", DisplayOrder = 4 }
+            );
+
+        // seed company data to bd
+        modelBuilder.Entity<Company>().HasData(
+            new Company { PostalCode = "12345", Name = "Company 1", City = "City 1", State = "State 1", StreetAddress = "1234 Street 1", PhoneNumber = "123-456-7890", Id = 1 },
+            new Company { PostalCode = "54321", Name = "Company 2", City = "City 2", State = "State 2", StreetAddress = "4321 Street 2", PhoneNumber = "098-765-4321", Id = 2 },
+            new Company { PostalCode = "67890", Name = "Company 3", City = "City 3", State = "State 3", StreetAddress = "6789 Street 3", PhoneNumber = "678-901-2345", Id = 3 },
+            new Company { PostalCode = "09876", Name = "Company 4", City = "City 4", State = "State 4", StreetAddress = "0987 Street 4", PhoneNumber = "098-765-4321", Id = 4 }
             );
 
         // seed product data to db

@@ -2,14 +2,15 @@
 
 public interface IUnitOfWorks
 {
-
     //  bellow one is a field declaration, not a property. we can not use this for Interface
     //  public readonly ICategoryRepository categoryRepository; 
 
     // Instead we need to use a property Instead
     ICategoryRepository CategoryRepository { get; }
-    public IProductRepository ProductRepository { get; }
-
+    IProductRepository ProductRepository { get; }
+    ICompanyRepository CompanyRepository { get; }
+    IShoppingCartRepository ShoppingCartRepository { get; }
+    IApplicationUserRepository ApplicationUserRepository { get; }
 
     public void Save();
 }

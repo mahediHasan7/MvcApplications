@@ -5,21 +5,21 @@
 
 function loadDataTable() {
     dataTable = $('#tblData').DataTable({
-        "ajax": { url: '/admin/product/getall' },
+        "ajax": { url: '/admin/company/getall' },
         "columns": [
-            { data: 'title', "width": "25%" },
-            { data: 'isbn', "width": "15%" },
-            { data: 'listPrice', "width": "10%" },
-            { data: 'author', "width": "15%" },
-            { data: 'category.name', "width": "10%" },
+            { data: 'name', "width": "20%" },
+            { data: 'phoneNumber', "width": "15%" },
+            { data: 'streetAddress', "width": "20%" },
+            { data: 'city', "width": "10%" },
+            { data: 'state', "width": "10%" },
             {
-                data: '',
+                data: 'id',
                 "render": function (data, type, row) {
                     return `
                     <div  class="w-75 btn-group" role="group">
-                      <a class="btn btn-primary mx-2" href="/admin/product/createOrupdate?id=${data}">Edit</a>
+                      <a class="btn btn-primary mx-2" href="/admin/company/createOrupdate?id=${data}">Edit</a>
 
-                      <a class="btn btn-danger mx-2" onClick=deleteProduct("/admin/product/delete?id=${data}")>Delete</a>
+                      <a class="btn btn-danger mx-2" onClick=deleteCompany("/admin/company/delete?id=${data}")>Delete</a>
 
                     </div>
                 ` },
@@ -30,9 +30,9 @@ function loadDataTable() {
 }
 
 
-function deleteProduct(url) {
+function deleteCompany(url) {
     Swal.fire({
-        title: "Do you want to remove this product?",
+        title: "Do you want to remove this company?",
         text: "You won't be able to revert this!",
         icon: "warning",
         showCancelButton: true,

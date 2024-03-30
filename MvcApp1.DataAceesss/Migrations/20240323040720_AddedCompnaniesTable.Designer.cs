@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MvcApp1.DataAccess.Data;
 
@@ -11,9 +12,11 @@ using MvcApp1.DataAccess.Data;
 namespace MvcApp1.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240323040720_AddedCompnaniesTable")]
+    partial class AddedCompnaniesTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -311,48 +314,6 @@ namespace MvcApp1.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Companies");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            City = "City 1",
-                            Name = "Company 1",
-                            PhoneNumber = "123-456-7890",
-                            PostalCode = "12345",
-                            State = "State 1",
-                            StreetAddress = "1234 Street 1"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            City = "City 2",
-                            Name = "Company 2",
-                            PhoneNumber = "098-765-4321",
-                            PostalCode = "54321",
-                            State = "State 2",
-                            StreetAddress = "4321 Street 2"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            City = "City 3",
-                            Name = "Company 3",
-                            PhoneNumber = "678-901-2345",
-                            PostalCode = "67890",
-                            State = "State 3",
-                            StreetAddress = "6789 Street 3"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            City = "City 4",
-                            Name = "Company 4",
-                            PhoneNumber = "098-765-4321",
-                            PostalCode = "09876",
-                            State = "State 4",
-                            StreetAddress = "0987 Street 4"
-                        });
                 });
 
             modelBuilder.Entity("MvcApp1.Models.Product", b =>
@@ -490,42 +451,12 @@ namespace MvcApp1.DataAccess.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MvcApp1.Models.ShoppingCart", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ApplicationUserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("Count")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ApplicationUserId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ShoppingCarts");
-                });
-
             modelBuilder.Entity("MvcApp1.Models.ApplicationUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
                     b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("CompanyId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -539,8 +470,6 @@ namespace MvcApp1.DataAccess.Migrations
 
                     b.Property<string>("StreetAddress")
                         .HasColumnType("nvarchar(max)");
-
-                    b.HasIndex("CompanyId");
 
                     b.HasDiscriminator().HasValue("ApplicationUser");
                 });
@@ -605,34 +534,6 @@ namespace MvcApp1.DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("Category");
-                });
-
-            modelBuilder.Entity("MvcApp1.Models.ShoppingCart", b =>
-                {
-                    b.HasOne("MvcApp1.Models.ApplicationUser", "ApplicationUser")
-                        .WithMany()
-                        .HasForeignKey("ApplicationUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MvcApp1.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ApplicationUser");
-
-                    b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("MvcApp1.Models.ApplicationUser", b =>
-                {
-                    b.HasOne("MvcApp1.Models.Company", "Company")
-                        .WithMany()
-                        .HasForeignKey("CompanyId");
-
-                    b.Navigation("Company");
                 });
 #pragma warning restore 612, 618
         }

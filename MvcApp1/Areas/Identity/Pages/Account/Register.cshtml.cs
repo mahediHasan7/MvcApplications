@@ -20,6 +20,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using MvcApp1.DataAccess.Repository.IRepository;
 using MvcApp1.Models;
 using MvcApp1.Utility;
 
@@ -34,6 +35,7 @@ namespace MvcApp1.Areas.Identity.Pages.Account
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly IUnitOfWorks _unitOfWork;
 
         public RegisterModel(
             UserManager<IdentityUser> userManager,
@@ -41,7 +43,8 @@ namespace MvcApp1.Areas.Identity.Pages.Account
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender,
-            RoleManager<IdentityRole> roleManager
+            RoleManager<IdentityRole> roleManager,
+            IUnitOfWorks unitOfWorks
             )
         {
             _userManager = userManager;
@@ -51,6 +54,7 @@ namespace MvcApp1.Areas.Identity.Pages.Account
             _logger = logger;
             _emailSender = emailSender;
             _roleManager = roleManager;
+            _unitOfWork = unitOfWorks;
         }
 
         /// <summary>
@@ -119,6 +123,10 @@ namespace MvcApp1.Areas.Identity.Pages.Account
             public string? State { get; set; }
             public string? PostalCode { get; set; }
             public string? PhoneNumber { get; set; } // this one already exists in IdentityUser model
+
+            public String? CompanyId { get; set; }
+            [ValidateNever]
+            public IEnumerable<SelectListItem> Companies { get; set; }
         }
 
 
@@ -141,8 +149,15 @@ namespace MvcApp1.Areas.Identity.Pages.Account
                 {
                     Text = roleName,
                     Value = roleName
+                }),
+                Companies = _unitOfWork.CompanyRepository.GetAll().Select(company => new SelectListItem()
+                {
+                    Text = company.Name,
+                    Value = company.Id.ToString()
                 })
             };
+
+
 
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
@@ -165,6 +180,11 @@ namespace MvcApp1.Areas.Identity.Pages.Account
                 user.City = Input.City;
                 user.State = Input.State;
                 user.PostalCode = Input.PostalCode;
+
+                if (Input.Role == SD.Role_Company)
+                {
+                    user.CompanyId = int.Parse(Input.CompanyId);
+                }
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
 

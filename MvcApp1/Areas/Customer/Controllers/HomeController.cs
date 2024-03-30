@@ -3,6 +3,7 @@ using MvcApp1.DataAccess.Data;
 using MvcApp1.DataAccess.Repository.IRepository;
 using MvcApp1.Models;
 using System.Diagnostics;
+using System.Security.Claims;
 
 namespace MvcApp1.Areas.Customer.Controllers
 {
@@ -20,14 +21,47 @@ namespace MvcApp1.Areas.Customer.Controllers
 
         public IActionResult Index()
         {
-            IEnumerable<Product> products = _unitOfWork.ProductRepository.GetAll("Category");
+            IEnumerable<Product> products = _unitOfWork.ProductRepository.GetAll(includeProperties: "Category");
             return View(products);
         }
 
         public IActionResult Details(int productId)
         {
             Product product = _unitOfWork.ProductRepository.Get(p => p.Id == productId, "Category");
-            return View(product);
+
+            ShoppingCart cart = new()
+            {
+                ProductId = product.Id,
+                Product = product,
+                Count = 1,
+                ApplicationUserId = User.FindFirstValue(ClaimTypes.NameIdentifier)
+            };
+
+            return View(cart);
+        }
+
+        [HttpPost]
+        public IActionResult Details(ShoppingCart cart)
+        {
+
+            // check if the userId and productId combination exists for any shopping cart in DB
+            ShoppingCart existingCartItem = _unitOfWork.ShoppingCartRepository.Get(c => c.ProductId == cart.ProductId && c.ApplicationUserId == cart.ApplicationUserId);
+
+            if (existingCartItem is null)
+            {
+                _unitOfWork.ShoppingCartRepository.Add(cart);
+
+            }
+            else
+            {
+                existingCartItem.Count += cart.Count;
+                _unitOfWork.ShoppingCartRepository.Update(existingCartItem);
+            }
+
+            _unitOfWork.Save();
+            TempData["success"] = "Cart updated successfully!";
+
+            return RedirectToAction(nameof(Index));
         }
 
         public IActionResult Privacy()
