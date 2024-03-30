@@ -8,7 +8,7 @@
                 <div class="row px-4">
                     <div class="col-6">
                         <h5 class="pt-2 text-white">
-                            Shopping Cart
+                            Order Details
                         </h5>
                     </div>
                     <div class="col-6 text-end">
@@ -101,8 +101,7 @@
                 <div class="row">
                     <div class="col-12 col-md-8 pt-2">
                         <p style="color:maroon; font-size:14px;">
-                            Estimate Arrival Date:
-
+                            Estimate Arrival Date: @GetEstArrivalDate()
                         </p>
                     </div>
                     <div class="col-12 col-md-4">
@@ -113,3 +112,16 @@
         </div>
     </div>
 </form>
+
+@functions {
+
+    public string GetEstArrivalDate()
+    {
+        TimeZoneInfo malaysiaTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Singapore Standard Time");
+        DateTime malaysiaTime = TimeZoneInfo.ConvertTime(DateTime.Now, malaysiaTimeZone);
+
+        string estArrivalDate = $"{malaysiaTime.AddDays(7).ToString("dd/MM/yyyy")} - {malaysiaTime.AddDays(37).ToString("dd/MM/yyyy")}";
+
+        return estArrivalDate;
+    }
+}
