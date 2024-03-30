@@ -11,6 +11,8 @@ public interface IUnitOfWorks
     ICompanyRepository CompanyRepository { get; }
     IShoppingCartRepository ShoppingCartRepository { get; }
     IApplicationUserRepository ApplicationUserRepository { get; }
+    IOrderHeaderRepository OrderHeaderRepository { get; }
+    IOrderDetailRepository OrderDetailRepository { get; }
 
     public void Save();
 }
