@@ -1,0 +1,19 @@
+﻿@model int
+
+<div class="text-center">
+
+    <img class="mb-3 w-25" id="gifImage" src="https://cdn.dribbble.com/users/2572904/screenshots/17169793/media/ed801ffe0fbeb4b95ca246ba1f5ea398.gif" alt="Placeholder Image">
+
+    <h2>Payment is complete</h2>
+    <h4>Your order Number is: @Model</h4>
+
+</div>
+
+<script>
+    var gifImage = document.getElementById('gifImage');
+    gifImage.addEventListener('load', function () {
+        setTimeout(function () {
+            gifImage.src = '/images/orderSucess.jpg';
+        }, 1130);
+    });
+</script>
