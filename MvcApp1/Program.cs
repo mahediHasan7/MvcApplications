@@ -30,6 +30,19 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.AccessDeniedPath = "/Identity/Account/AccessDenied";
 });
 
+// Adding the session configuration
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(100);
+
+    // to avoid client side script accessing, 
+    // its true to make it only accessible from the server
+    options.Cookie.HttpOnly = true;
+
+    // this ensure the session cookie will be sent with the request always even when no cookies are sent and regardless the cookie consent settings of the user's browser
+    options.Cookie.IsEssential = true;
+});
 
 // Injecting Stripe secret and publishable key to StripeSetting properties
 builder.Services.Configure<StripeSettings>(builder.Configuration.GetSection("Stripe"));
@@ -56,6 +69,9 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+// adding session in the request pipeline
+app.UseSession();
 
 app.MapRazorPages();
 
