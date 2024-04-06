@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using MvcApp1.Utility;
 
 namespace MvcApp1.Areas.Identity.Pages.Account
 {
@@ -26,6 +27,9 @@ namespace MvcApp1.Areas.Identity.Pages.Account
         public async Task<IActionResult> OnPost(string returnUrl = null)
         {
             await _signInManager.SignOutAsync();
+
+            // clear the session
+            HttpContext.Session.Remove(SD.CartSession);
             _logger.LogInformation("User logged out.");
             if (returnUrl != null)
             {

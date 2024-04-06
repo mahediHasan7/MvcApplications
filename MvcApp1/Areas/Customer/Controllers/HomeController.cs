@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using MvcApp1.DataAccess.Data;
 using MvcApp1.DataAccess.Repository.IRepository;
 using MvcApp1.Models;
+using MvcApp1.Utility;
 using System.Diagnostics;
 using System.Security.Claims;
 
@@ -61,6 +62,8 @@ namespace MvcApp1.Areas.Customer.Controllers
             _unitOfWork.Save();
             TempData["success"] = "Cart updated successfully!";
 
+            SetCartItemCountIntoSession();
+
             return RedirectToAction(nameof(Index));
         }
 
@@ -73,6 +76,14 @@ namespace MvcApp1.Areas.Customer.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        private void SetCartItemCountIntoSession()
+        {
+            // check if the userId and productId combination exists for any shopping cart in DB
+            int cartItemCountForUser = _unitOfWork.ShoppingCartRepository.GetAll(c => c.ApplicationUserId == User.FindFirstValue(ClaimTypes.NameIdentifier)).Count();
+
+            HttpContext.Session.SetInt32(SD.CartSession, cartItemCountForUser);
         }
     }
 }

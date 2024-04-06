@@ -67,6 +67,8 @@ namespace MvcApp1.Areas.Customer.Controllers
                 _unitOfWork.Save();
             }
 
+            SetCartItemCountIntoSession();
+
             return RedirectToAction(nameof(Index));
         }
 
@@ -77,6 +79,8 @@ namespace MvcApp1.Areas.Customer.Controllers
             _unitOfWork.ShoppingCartRepository.Remove(cart);
             _unitOfWork.Save();
             TempData["success"] = "The item has been removed from cart";
+
+            SetCartItemCountIntoSession();
 
             return RedirectToAction(nameof(Index));
         }
@@ -256,6 +260,14 @@ namespace MvcApp1.Areas.Customer.Controllers
                 int n when (n >= 100) => product.Price100,
                 _ => 0,
             };
+        }
+
+        private void SetCartItemCountIntoSession()
+        {
+            // check if the userId and productId combination exists for any shopping cart in DB
+            int cartItemCountForUser = _unitOfWork.ShoppingCartRepository.GetAll(c => c.ApplicationUserId == User.FindFirstValue(ClaimTypes.NameIdentifier)).Count();
+
+            HttpContext.Session.SetInt32(SD.CartSession, cartItemCountForUser);
         }
     }
 }
