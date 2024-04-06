@@ -6,6 +6,8 @@ namespace MvcApp1.Models;
 
 public class OrderHeader
 {
+    // Navigation properties in ASP.NET are properties that allow you to navigate and establish relationships between entities in an object-oriented manner.
+
     public int Id { get; set; }
 
     public string ApplicationUserId { get; set; }
@@ -24,6 +26,8 @@ public class OrderHeader
     public string? PaymentStatus { get; set; }
     public string? TrackingNumber { get; set; }
     public string? Carrier { get; set; }
+
+    public string? SessionId { get; set; } // for stripe 
     public string? PaymentIntentId { get; set; } // for stripe 
 
     [Required]
