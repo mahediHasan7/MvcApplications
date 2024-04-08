@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using MvcApp1.Utility;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Stripe;
+using MvcApp1.DataAccess.DbInitializer;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -49,6 +50,9 @@ builder.Services.Configure<StripeSettings>(builder.Configuration.GetSection("Str
 
 builder.Services.AddScoped<IUnitOfWorks, UnitOfWork>();
 
+// Add the IDbInitializer to the Service
+builder.Services.AddScoped<IDbInitializer, DbInitializer>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -73,10 +77,26 @@ app.UseAuthorization();
 // adding session in the request pipeline
 app.UseSession();
 
+// Initialize database pending migration, create role and admin (if not exists)
+SeedDatabase();
+
 app.MapRazorPages();
+
+
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{area=Customer}/{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+
+
+
+void SeedDatabase()
+{
+    using (var scope = app.Services.CreateScope())
+    {
+        var dbInitializer = scope.ServiceProvider.GetRequiredService<IDbInitializer>();
+        dbInitializer.Initialize();
+    }
+}
