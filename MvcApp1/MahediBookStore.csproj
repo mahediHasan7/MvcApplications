@@ -21,9 +21,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\MvcApp1.DataAceesss\MvcApp1.DataAccess.csproj" />
-		<ProjectReference Include="..\MvcApp1.Models\MvcApp1.Models.csproj" />
-		<ProjectReference Include="..\MvcApp1.Utility\MvcApp1.Utility.csproj" />
+		<ProjectReference Include="..\MvcApp1.DataAceesss\MahediBookStore.DataAccess.csproj" />
+		<ProjectReference Include="..\MvcApp1.Models\MahediBookStore.Models.csproj" />
+		<ProjectReference Include="..\MvcApp1.Utility\MahediBookStore.Utility.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

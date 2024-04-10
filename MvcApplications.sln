@@ -3,25 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvcApp1", "MvcApp1\MvcApp1.csproj", "{B4832C15-FC8C-4A55-A32D-134EEDFBC059}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MahediBookStore", "MvcApp1\MahediBookStore.csproj", "{B4832C15-FC8C-4A55-A32D-134EEDFBC059}"
 	ProjectSection(ProjectDependencies) = postProject
 		{1115008C-E173-4759-85BA-F569CB2CE54B} = {1115008C-E173-4759-85BA-F569CB2CE54B}
 		{9AD99BA0-8250-45EF-8401-D1D95848E14B} = {9AD99BA0-8250-45EF-8401-D1D95848E14B}
 		{A5051FD7-668C-4F0E-95EE-5C818D453613} = {A5051FD7-668C-4F0E-95EE-5C818D453613}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcApp1.DataAccess", "MvcApp1.DataAceesss\MvcApp1.DataAccess.csproj", "{9AD99BA0-8250-45EF-8401-D1D95848E14B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MahediBookStore.DataAccess", "MvcApp1.DataAceesss\MahediBookStore.DataAccess.csproj", "{9AD99BA0-8250-45EF-8401-D1D95848E14B}"
 	ProjectSection(ProjectDependencies) = postProject
 		{1115008C-E173-4759-85BA-F569CB2CE54B} = {1115008C-E173-4759-85BA-F569CB2CE54B}
 		{A5051FD7-668C-4F0E-95EE-5C818D453613} = {A5051FD7-668C-4F0E-95EE-5C818D453613}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcApp1.Models", "MvcApp1.Models\MvcApp1.Models.csproj", "{1115008C-E173-4759-85BA-F569CB2CE54B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MahediBookStore.Models", "MvcApp1.Models\MahediBookStore.Models.csproj", "{1115008C-E173-4759-85BA-F569CB2CE54B}"
 	ProjectSection(ProjectDependencies) = postProject
 		{A5051FD7-668C-4F0E-95EE-5C818D453613} = {A5051FD7-668C-4F0E-95EE-5C818D453613}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcApp1.Utility", "MvcApp1.Utility\MvcApp1.Utility.csproj", "{A5051FD7-668C-4F0E-95EE-5C818D453613}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MahediBookStore.Utility", "MvcApp1.Utility\MahediBookStore.Utility.csproj", "{A5051FD7-668C-4F0E-95EE-5C818D453613}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
