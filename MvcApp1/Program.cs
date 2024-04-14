@@ -1,12 +1,12 @@
 using Microsoft.EntityFrameworkCore;
-using MvcApp1.DataAccess.Data;
-using MvcApp1.DataAccess.Repository;
-using MvcApp1.DataAccess.Repository.IRepository;
+using MahediBookStore.DataAccess.Data;
+using MahediBookStore.DataAccess.Repository;
+using MahediBookStore.DataAccess.Repository.IRepository;
 using Microsoft.AspNetCore.Identity;
-using MvcApp1.Utility;
+using MahediBookStore.Utility;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Stripe;
-using MvcApp1.DataAccess.DbInitializer;
+using MahediBookStore.DataAccess.DbInitializer;
 
 var builder = WebApplication.CreateBuilder(args);
 

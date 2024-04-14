@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace MvcApp1.Views.Shared
+namespace MahediBookStore.Views.Shared
 {
     public class _NotificationModel : PageModel
     {

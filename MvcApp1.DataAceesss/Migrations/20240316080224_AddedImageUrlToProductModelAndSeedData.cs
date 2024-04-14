@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace MvcApp1.DataAccess.Migrations
+namespace MahediBookStore.DataAccess.Migrations
 {
     /// <inheritdoc />
     public partial class AddedImageUrlToProductModelAndSeedData : Migration

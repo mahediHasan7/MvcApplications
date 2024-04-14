@@ -20,11 +20,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
-using MvcApp1.DataAccess.Repository.IRepository;
-using MvcApp1.Models;
-using MvcApp1.Utility;
+using MahediBookStore.DataAccess.Repository.IRepository;
+using MahediBookStore.Models;
+using MahediBookStore.Utility;
 
-namespace MvcApp1.Areas.Identity.Pages.Account
+namespace MahediBookStore.Areas.Identity.Pages.Account
 {
     public class RegisterModel : PageModel
     {

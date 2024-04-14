@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using MvcApp1.DataAccess.Data;
+using MahediBookStore.DataAccess.Data;
 
 #nullable disable
 
-namespace MvcApp1.DataAccess.Migrations
+namespace MahediBookStore.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20240319134507_ExtendIdentityUser")]
@@ -236,7 +236,7 @@ namespace MvcApp1.DataAccess.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("MvcApp1.Models.Category", b =>
+            modelBuilder.Entity("MahediBookStore.Models.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -283,7 +283,7 @@ namespace MvcApp1.DataAccess.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MvcApp1.Models.Product", b =>
+            modelBuilder.Entity("MahediBookStore.Models.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -418,7 +418,7 @@ namespace MvcApp1.DataAccess.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MvcApp1.Models.ApplicationUser", b =>
+            modelBuilder.Entity("MahediBookStore.Models.ApplicationUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
@@ -492,9 +492,9 @@ namespace MvcApp1.DataAccess.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("MvcApp1.Models.Product", b =>
+            modelBuilder.Entity("MahediBookStore.Models.Product", b =>
                 {
-                    b.HasOne("MvcApp1.Models.Category", "Category")
+                    b.HasOne("MahediBookStore.Models.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)

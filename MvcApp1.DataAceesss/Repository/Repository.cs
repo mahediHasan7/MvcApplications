@@ -1,10 +1,10 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
-using MvcApp1.DataAccess.Data;
-using MvcApp1.DataAccess.Repository.IRepository;
+using MahediBookStore.DataAccess.Data;
+using MahediBookStore.DataAccess.Repository.IRepository;
 using System.Linq.Expressions;
 
-namespace MvcApp1.DataAccess.Repository;
+namespace MahediBookStore.DataAccess.Repository;
 
 
 // It specifies that T must be a reference type, not a value type. In other words, T must be a class, not a struct or an enum.

@@ -1,8 +1,8 @@
-﻿using MvcApp1.DataAccess.Data;
-using MvcApp1.DataAccess.Repository.IRepository;
-using MvcApp1.Models;
+﻿using MahediBookStore.DataAccess.Data;
+using MahediBookStore.DataAccess.Repository.IRepository;
+using MahediBookStore.Models;
 
-namespace MvcApp1.DataAccess.Repository;
+namespace MahediBookStore.DataAccess.Repository;
 
 internal class CompanyRepository : Repository<Company>, ICompanyRepository
 {

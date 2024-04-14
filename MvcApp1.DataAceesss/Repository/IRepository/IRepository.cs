@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace MvcApp1.DataAccess.Repository.IRepository;
+namespace MahediBookStore.DataAccess.Repository.IRepository;
 
 
 // It specifies that T must be a reference type, not a value type. In other words, T must be a class, not a struct or an enum.

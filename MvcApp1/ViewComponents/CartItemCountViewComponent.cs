@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MvcApp1.DataAccess.Repository.IRepository;
-using MvcApp1.Utility;
+using MahediBookStore.DataAccess.Repository.IRepository;
+using MahediBookStore.Utility;
 using System.Security.Claims;
 
-namespace MvcApp1.ViewComponents
+namespace MahediBookStore.ViewComponents
 {
     public class CartItemCountViewComponent : ViewComponent
     {

@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 
-namespace MvcApp1.Areas.Identity.Pages.Account
+namespace MahediBookStore.Areas.Identity.Pages.Account
 {
     public class ForgotPasswordModel : PageModel
     {

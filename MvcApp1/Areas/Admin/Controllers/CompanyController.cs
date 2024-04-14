@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using MvcApp1.DataAccess.Repository.IRepository;
-using MvcApp1.Models;
-using MvcApp1.Utility;
+using MahediBookStore.DataAccess.Repository.IRepository;
+using MahediBookStore.Models;
+using MahediBookStore.Utility;
 
-namespace MvcApp1.Areas.Admin.Controllers;
+namespace MahediBookStore.Areas.Admin.Controllers;
 
 [Area("Admin")]
 [Authorize(Roles = SD.Role_Admin)]

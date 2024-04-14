@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.UI.Services;
 
-namespace MvcApp1.Utility;
+namespace MahediBookStore.Utility;
 
 public class EmailSender : IEmailSender
 {

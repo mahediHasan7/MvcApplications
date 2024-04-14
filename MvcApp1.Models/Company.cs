@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace MvcApp1.Models;
+namespace MahediBookStore.Models;
 
 public class Company
 {

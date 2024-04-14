@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using MvcApp1.DataAccess.Data;
-using MvcApp1.Models;
-using MvcApp1.Utility;
+using MahediBookStore.DataAccess.Data;
+using MahediBookStore.Models;
+using MahediBookStore.Utility;
 
-namespace MvcApp1.DataAccess.DbInitializer
+namespace MahediBookStore.DataAccess.DbInitializer
 {
     public class DbInitializer(ApplicationDbContext context, RoleManager<IdentityRole> roleManager, UserManager<IdentityUser> userManager) : IDbInitializer
     {

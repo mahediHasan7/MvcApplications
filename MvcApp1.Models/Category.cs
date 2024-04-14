@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 
-namespace MvcApp1.Models;
+namespace MahediBookStore.Models;
 
 [DebuggerDisplay("{Name}")]
 public class Category

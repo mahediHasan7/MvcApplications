@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MvcApp1.DataAccess.DbInitializer
+namespace MahediBookStore.DataAccess.DbInitializer
 {
     public interface IDbInitializer
     {

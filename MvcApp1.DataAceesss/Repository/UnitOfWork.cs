@@ -1,7 +1,7 @@
-﻿using MvcApp1.DataAccess.Data;
-using MvcApp1.DataAccess.Repository.IRepository;
+﻿using MahediBookStore.DataAccess.Data;
+using MahediBookStore.DataAccess.Repository.IRepository;
 
-namespace MvcApp1.DataAccess.Repository;
+namespace MahediBookStore.DataAccess.Repository;
 
 public class UnitOfWork : IUnitOfWorks
 {

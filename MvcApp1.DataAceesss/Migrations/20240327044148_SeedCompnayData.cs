@@ -4,7 +4,7 @@
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace MvcApp1.DataAccess.Migrations
+namespace MahediBookStore.DataAccess.Migrations
 {
     /// <inheritdoc />
     public partial class SeedCompnayData : Migration

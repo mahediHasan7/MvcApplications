@@ -1,4 +1,4 @@
-﻿namespace MvcApp1.Utility;
+﻿namespace MahediBookStore.Utility;
 
 // Static Details
 public static class SD

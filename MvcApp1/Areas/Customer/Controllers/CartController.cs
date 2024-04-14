@@ -1,14 +1,14 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using MvcApp1.DataAccess.Repository.IRepository;
-using MvcApp1.Models;
-using MvcApp1.Models.ViewModels;
-using MvcApp1.Utility;
+using MahediBookStore.DataAccess.Repository.IRepository;
+using MahediBookStore.Models;
+using MahediBookStore.Models.ViewModels;
+using MahediBookStore.Utility;
 using Stripe;
 using Stripe.Checkout;
 using System.Security.Claims;
 
-namespace MvcApp1.Areas.Customer.Controllers
+namespace MahediBookStore.Areas.Customer.Controllers
 {
     [Area("Customer")]
     [Authorize]
@@ -250,7 +250,7 @@ namespace MvcApp1.Areas.Customer.Controllers
 
         private double GetPriceBasedOnQuantity(ShoppingCart cart)
         {
-            MvcApp1.Models.Product product = cart.Product;
+            MahediBookStore.Models.Product product = cart.Product;
             int count = cart.Count;
 
             return count switch

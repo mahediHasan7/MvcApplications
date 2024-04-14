@@ -1,4 +1,4 @@
-﻿namespace MvcApp1.Utility;
+﻿namespace MahediBookStore.Utility;
 
 public class StripeSettings
 {

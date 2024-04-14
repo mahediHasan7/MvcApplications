@@ -1,4 +1,4 @@
-namespace MvcApp1.Models
+namespace MahediBookStore.Models
 {
     public class ErrorViewModel
     {

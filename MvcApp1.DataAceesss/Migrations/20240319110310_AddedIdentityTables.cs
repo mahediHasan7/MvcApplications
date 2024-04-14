@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace MvcApp1.DataAccess.Migrations
+namespace MahediBookStore.DataAccess.Migrations
 {
     /// <inheritdoc />
     public partial class AddedIdentityTables : Migration

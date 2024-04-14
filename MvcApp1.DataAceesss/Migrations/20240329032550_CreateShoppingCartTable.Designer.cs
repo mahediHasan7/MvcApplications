@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using MvcApp1.DataAccess.Data;
+using MahediBookStore.DataAccess.Data;
 
 #nullable disable
 
-namespace MvcApp1.DataAccess.Migrations
+namespace MahediBookStore.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20240329032550_CreateShoppingCartTable")]
@@ -232,7 +232,7 @@ namespace MvcApp1.DataAccess.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("MvcApp1.Models.Category", b =>
+            modelBuilder.Entity("MahediBookStore.Models.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -279,7 +279,7 @@ namespace MvcApp1.DataAccess.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MvcApp1.Models.Company", b =>
+            modelBuilder.Entity("MahediBookStore.Models.Company", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -358,7 +358,7 @@ namespace MvcApp1.DataAccess.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MvcApp1.Models.Product", b =>
+            modelBuilder.Entity("MahediBookStore.Models.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -493,7 +493,7 @@ namespace MvcApp1.DataAccess.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MvcApp1.Models.ShoppingCart", b =>
+            modelBuilder.Entity("MahediBookStore.Models.ShoppingCart", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -520,7 +520,7 @@ namespace MvcApp1.DataAccess.Migrations
                     b.ToTable("ShoppingCarts");
                 });
 
-            modelBuilder.Entity("MvcApp1.Models.ApplicationUser", b =>
+            modelBuilder.Entity("MahediBookStore.Models.ApplicationUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
@@ -599,9 +599,9 @@ namespace MvcApp1.DataAccess.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("MvcApp1.Models.Product", b =>
+            modelBuilder.Entity("MahediBookStore.Models.Product", b =>
                 {
-                    b.HasOne("MvcApp1.Models.Category", "Category")
+                    b.HasOne("MahediBookStore.Models.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -610,15 +610,15 @@ namespace MvcApp1.DataAccess.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("MvcApp1.Models.ShoppingCart", b =>
+            modelBuilder.Entity("MahediBookStore.Models.ShoppingCart", b =>
                 {
-                    b.HasOne("MvcApp1.Models.ApplicationUser", "ApplicationUser")
+                    b.HasOne("MahediBookStore.Models.ApplicationUser", "ApplicationUser")
                         .WithMany()
                         .HasForeignKey("ApplicationUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MvcApp1.Models.Product", "Product")
+                    b.HasOne("MahediBookStore.Models.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -629,9 +629,9 @@ namespace MvcApp1.DataAccess.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("MvcApp1.Models.ApplicationUser", b =>
+            modelBuilder.Entity("MahediBookStore.Models.ApplicationUser", b =>
                 {
-                    b.HasOne("MvcApp1.Models.Company", "Company")
+                    b.HasOne("MahediBookStore.Models.Company", "Company")
                         .WithMany()
                         .HasForeignKey("CompanyId");
 

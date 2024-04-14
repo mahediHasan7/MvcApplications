@@ -1,12 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
-using MvcApp1.DataAccess.Data;
-using MvcApp1.DataAccess.Repository.IRepository;
-using MvcApp1.Models;
-using MvcApp1.Utility;
+using MahediBookStore.DataAccess.Data;
+using MahediBookStore.DataAccess.Repository.IRepository;
+using MahediBookStore.Models;
+using MahediBookStore.Utility;
 using System.Diagnostics;
 using System.Security.Claims;
 
-namespace MvcApp1.Areas.Customer.Controllers
+namespace MahediBookStore.Areas.Customer.Controllers
 {
     [Area("Customer")]
     public class HomeController : Controller

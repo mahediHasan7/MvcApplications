@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using MvcApp1.DataAccess.Data;
+using MahediBookStore.DataAccess.Data;
 
 #nullable disable
 
-namespace MvcApp1.DataAccess.Migrations
+namespace MahediBookStore.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20240315104023_CreateProductsTableAndSeedData")]
@@ -24,7 +24,7 @@ namespace MvcApp1.DataAccess.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("MvcApp1.Models.Category", b =>
+            modelBuilder.Entity("MahediBookStore.Models.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -95,7 +95,7 @@ namespace MvcApp1.DataAccess.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MvcApp1.Models.Product", b =>
+            modelBuilder.Entity("MahediBookStore.Models.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

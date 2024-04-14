@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MvcApp1.Models;
+namespace MahediBookStore.Models;
 
 public class OrderDetail
 {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
-namespace MvcApp1.Models.ViewModels;
+namespace MahediBookStore.Models.ViewModels;
 
 public class OrderVM
 {

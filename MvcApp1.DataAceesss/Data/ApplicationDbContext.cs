@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using MahediBookStore.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using MvcApp1.Models;
 
-namespace MvcApp1.DataAccess.Data;
+namespace MahediBookStore.DataAccess.Data;
 public class ApplicationDbContext : IdentityDbContext<IdentityUser>
 {
     // Entities

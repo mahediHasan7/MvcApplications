@@ -1,6 +1,6 @@
-﻿using MvcApp1.Models;
+﻿using MahediBookStore.Models;
 
-namespace MvcApp1.DataAccess.Repository.IRepository;
+namespace MahediBookStore.DataAccess.Repository.IRepository;
 
 public interface IShoppingCartRepository : IRepository<ShoppingCart>
 {

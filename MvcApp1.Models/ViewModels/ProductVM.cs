@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace MvcApp1.Models.ViewModels;
+namespace MahediBookStore.Models.ViewModels;
 
 public class ProductVM
 {
