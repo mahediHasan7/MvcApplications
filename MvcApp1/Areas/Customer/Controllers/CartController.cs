@@ -171,7 +171,7 @@ namespace MahediBookStore.Areas.Customer.Controllers
             if (user.CompanyId.GetValueOrDefault() == 0)
             {
                 // Customer payment using stripe
-                var domain = "https://localhost:7109/";
+                var domain = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}/";
 
                 var options = new Stripe.Checkout.SessionCreateOptions
                 {

@@ -148,8 +148,7 @@ public class OrderController : Controller
         OrderVM.OrderHeader = _unitOfWork.OrderHeaderRepository.Get(oh => oh.Id == OrderVM.OrderHeader.Id, includeProperties: "ApplicationUser");
         OrderVM.OrderDetailList = _unitOfWork.OrderDetailRepository.GetAll(od => od.OrderHeaderId == OrderVM.OrderHeader.Id, includeProperties: "Product");
 
-
-        var domain = "https://localhost:7109/";
+        var domain = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}";
 
         var options = new Stripe.Checkout.SessionCreateOptions
         {
